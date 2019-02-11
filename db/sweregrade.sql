@@ -111,6 +111,10 @@ CREATE TABLE IF NOT EXISTS `sweregrade`.`user` (
   PRIMARY KEY (`userid`))
 ENGINE = InnoDB;
 
+insert into user(userid,username,password,role) values('1','admin','root','Admin');
+insert into user(userid,username,password,role) values('2','lecture','l1234','Lecture');
+insert into user(userid,username,password,role) values('3','student','s1234','Student');
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
