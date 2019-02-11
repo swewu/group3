@@ -22,4 +22,26 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
+
+	public function Login(){
+
+		$username = $this->input->post('username');
+        $password = $this->input->post('password'); 
+        $this->load->model("UserModel");
+        $result = $this->UserModel->login($username,$password);
+        if($result){
+            redirect('Welcome/student'); 
+           
+        }
+        else{
+            redirect('Welcome/Login'); 
+        }
+		
+	}
+
+	public function student(){
+		$this->load->view('student');
+	}
+
+
 }

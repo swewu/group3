@@ -5,32 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- <script>
+ $(document).ready(function(){
+     $("button").click(function(){
+         $.post("UserModel.php",
+         {
+             username : $("#username").val(),
+             password : $("#password").val()
+         }
+        });
+     });
+ });
+ </script> -->
 </head>
 <body>
 
-<form action="action_page.php">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+<form method="post" action="<?php echo base_url('Welcome/Login'); ?>"> 
+        <table cellpadding="2" cellspacing="2">  
+            <tr>  
+                <td><th>Username:</th></td>  
+                <td><input type="text" name="username" id="username"></td>  
+            </tr>  
+            <tr>  
+                <td><th>Password:</th></td>  
+                <td><input type="password" name="password" id="password"></td>  
+            </tr>  
+  
+            <tr>  
+                <td> </td>  
+                <td><input type="submit" value="Login"></td>  
+            </tr>  
+        </table>  
+    </form>  
     
 </body>
 </html>
+
+
