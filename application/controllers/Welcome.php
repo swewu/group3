@@ -20,6 +20,86 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('form_login');
+
 	}
+	public function inseruser()
+	{
+		$this->load->view('form_user');
+	}
+
+	public function student()
+	{
+		$this->load->view('student');
+	}
+
+	public function teacher()
+	{
+		$this->load->view('teacher');
+	}
+
+	public function getdata()
+	{
+ 			$subjecthistory = $this->getsubjecthistory();
+ 			$data['subjecthistory'] = $subjecthistory;
+			$this->load->view('testdata',$data);
+	}
+	public function checkLogin(){
+		$id  = isset($_GET['name'])?$_GET['name']:"";
+		$pass = isset($_GET['password'])?$_GET['password']:"";
+		$this->load->model('UserModel');
+		$result = $this->UserModel->checkLogin($id,$pass);
+		if($result){
+			echo '<script>alert("Student Login Success")</script>';
+			if($_SESSION['role'] == "Student"){
+				redirect('Welcome/student');
+			}else if($_SESSION['role'] == 'Admin'){
+				redirect('Welcome/teacher');
+			}
+			
+			
+		}
+			
+	}
+	public function insertUser()
+	{
+		$id  = isset($_GET['id'])?$_GET['id']:"";
+		$username = isset($_GET['username'])?$_GET['username']:"";
+		$password = isset($_GET['password'])?$_GET['password']:"";
+		$role = isset($_GET['role'])?$_GET['role']:"";
+		$this->load->model('UserModel');
+		$result = $this->UserModel->create($id, $username, $password, $role);
+		if($result){
+			echo '<script>alert("Student Login Success")</script>';
+			// redirect('Welcome/index');
+		}
+	}
+
+	public function getuser(){
+		$this->load->model('ActivitySWEModel','ac');
+		$result = $this->ac->getuser();
+		return $result;
+	}
+
+	public function deletesubjesthistoy($historyid)
+	{
+		$sql = "delete  FROM historygrade where historyid= '".$historyid."' ";
+		$query = $this->db->query($sql);	
+		return $query;
+	}
+	public function deletesubjectre($gradeid)
+	{
+		$sql = "delete  FROM regrade where gradeid= '".$gradeid."' ";
+		$query = $this->db->query($sql);	
+		return $query;
+	}
+
+
+	public function getsubjecthistory(){
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getsubjecthistory();
+		return $result;
+	}
+
+
 }
