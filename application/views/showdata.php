@@ -127,7 +127,7 @@
       $(document).ready(function(){  
            $('.delete_data').click(function(){  
                 var id = $(this).attr("id");  
-                if(confirm("Are you sure you want to delete this?"))  
+                if(confirm("Hello Group 3"))  
                 {  
                      window.location="<?php echo base_url(); ?>views/updatestudent/"+id;  
                 }  
