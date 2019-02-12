@@ -15,12 +15,14 @@ class UserModel extends CI_Model
         return ($this->db->affected_rows() != 1) ? false : true;
     }
 
-    public function checkLogin($id, $pass){
+    public function checkLogin($id, $pass)
+    {
 		$sql ="SELECT * FROM user where username = '".$id."' and password = '".$pass."' ";
 		// var_dump($sql);
 		$query = $this->db->query($sql);
 		$result = false;
-		if($query){
+        if($query)
+        {
 			foreach ($query->result() as $row ) {
 				if($row->password == $pass){
 					$_SESSION['login'] = 1;
