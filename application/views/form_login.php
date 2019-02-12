@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action="<?php echo site_url('Welcome/checkLogin') ?>" method="get">
-	<input type="text" name="name" placeholder="name" required>
+	<input type="text" name="id" placeholder="id" required>
 	<input type="password" name="password" placeholder="password" required>
 	<input type="submit" value="Login"></form>
 </form>
