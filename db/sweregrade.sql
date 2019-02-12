@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2019 at 04:21 AM
+-- Generation Time: Feb 12, 2019 at 04:43 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `sweregrade`
 --
+CREATE DATABASE IF NOT EXISTS `sweregrade` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `sweregrade`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `course`
 --
 
+DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
   `courseid` varchar(20) NOT NULL,
   `coursename` varchar(200) DEFAULT NULL
@@ -39,6 +42,7 @@ CREATE TABLE `course` (
 -- Table structure for table `historygrade`
 --
 
+DROP TABLE IF EXISTS `historygrade`;
 CREATE TABLE `historygrade` (
   `historyid` int(10) NOT NULL,
   `term` int(3) NOT NULL,
@@ -57,6 +61,7 @@ CREATE TABLE `historygrade` (
 -- Table structure for table `regrade`
 --
 
+DROP TABLE IF EXISTS `regrade`;
 CREATE TABLE `regrade` (
   `gradeid` int(10) NOT NULL,
   `term` int(3) NOT NULL,
@@ -72,6 +77,7 @@ CREATE TABLE `regrade` (
 -- Table structure for table `student`
 --
 
+DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `studentid` int(10) NOT NULL,
   `studentname` varchar(200) NOT NULL
@@ -83,6 +89,7 @@ CREATE TABLE `student` (
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `userid` int(10) UNSIGNED ZEROFILL NOT NULL,
   `username` varchar(45) NOT NULL,
